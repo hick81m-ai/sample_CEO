@@ -1,320 +1,777 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OlyLife Shaken Massager | 経営者のための細胞投資</title>
-    <meta name="description" content="テラヘルツ波×PEMF。多忙な経営者のパフォーマンスを支える、次世代のウェアラブル・コアケア。">
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #0f172a; /* Midnight Navy */
-            --accent: #b48a54;  /* Copper Gold */
-            --bg-light: #f8fafc;
-        }
-        body {
-            font-family: 'Noto Sans JP', sans-serif;
-            color: #1e293b;
-            scroll-behavior: smooth;
-        }
-        .font-elegant { font-family: 'Noto Serif JP', serif; }
-        
-        /* Reveal Animation: 上品な時間差表示 */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OlyLife Shaken Massager | 経営者のための細胞投資</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+JP:wght@200;300;400&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --charcoal: #1a1a1a;
+      --gold: #b8955a;
+      --gold-light: #d4af76;
+      --gold-pale: #f0e6d0;
+      --white: #f8f5f0;
+      --gray: #888;
+      --gray-light: #bbb;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 200;
+      overflow-x: hidden;
+    }
 
-        /* 経営者の格を出すグラデーションテキスト */
-        .text-gradient {
-            background: linear-gradient(to right, #b48a54, #e2c08d);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 24px 60px;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.97) 0%, transparent 100%);
+    }
+    .nav-logo {
+      font-family: 'Montserrat', sans-serif; font-weight: 300;
+      font-size: 13px; letter-spacing: 0.3em; color: var(--gold-light); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links a {
+      font-family: 'Montserrat', sans-serif; font-weight: 300;
+      font-size: 11px; letter-spacing: 0.25em; color: var(--gray-light);
+      text-decoration: none; text-transform: uppercase; transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-cta {
+      font-family: 'Montserrat', sans-serif; font-weight: 400;
+      font-size: 11px; letter-spacing: 0.2em; color: var(--gold);
+      text-decoration: none; border: 1px solid var(--gold); padding: 10px 24px;
+      transition: background 0.3s, color 0.3s;
+    }
+    .nav-cta:hover { background: var(--gold); color: var(--black); }
 
-        /* ガラス質感の背景エフェクト */
-        .glass {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+    /* HERO */
+    .hero {
+      position: relative; height: 100vh;
+      display: flex; align-items: flex-end;
+      padding: 0 60px 100px; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(135deg, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.4) 60%, rgba(10,10,10,0.92) 100%),
+        url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1600') center/cover no-repeat;
+    }
+    .hero-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 20% 80%, rgba(184,149,90,0.08) 0%, transparent 60%);
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 820px; }
+    .hero-eyebrow {
+      font-family: 'Montserrat', sans-serif; font-weight: 300;
+      font-size: 11px; letter-spacing: 0.4em; color: var(--gold);
+      text-transform: uppercase; margin-bottom: 28px;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: inline-block;
+      width: 40px; height: 1px; background: var(--gold);
+    }
+    .hero-headline {
+      font-family: 'Cormorant Garamond', serif; font-weight: 300;
+      font-size: clamp(40px, 5.5vw, 70px); line-height: 1.25;
+      letter-spacing: 0.02em; color: var(--white); margin-bottom: 32px;
+    }
+    .hero-headline em { font-style: italic; color: var(--gold-light); }
+    .hero-sub {
+      font-size: 15px; line-height: 2.1; color: var(--gray-light);
+      max-width: 560px; margin-bottom: 52px; letter-spacing: 0.05em;
+    }
+    .hero-cta-group { display: flex; gap: 24px; align-items: center; }
+    .btn-primary {
+      display: inline-block; font-family: 'Montserrat', sans-serif; font-weight: 400;
+      font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--black); background: var(--gold); padding: 18px 44px;
+      text-decoration: none; transition: background 0.3s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-secondary {
+      display: inline-block; font-family: 'Montserrat', sans-serif; font-weight: 300;
+      font-size: 11px; letter-spacing: 0.25em; color: var(--gray-light);
+      text-decoration: none; text-transform: uppercase;
+      border-bottom: 1px solid rgba(184,149,90,0.4); padding-bottom: 4px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .btn-secondary:hover { color: var(--gold-light); border-color: var(--gold-light); }
 
-        /* 上品なボタンホバー */
-        .btn-hover {
-            transition: all 0.3s ease;
-        }
-        .btn-hover:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px -5px rgba(180, 138, 84, 0.4);
-        }
+    /* SHARED */
+    .section-label {
+      font-family: 'Montserrat', sans-serif; font-weight: 300;
+      font-size: 10px; letter-spacing: 0.5em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 20px;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif; font-weight: 300;
+      font-size: clamp(30px, 3.5vw, 50px); line-height: 1.4;
+      color: var(--white); margin-bottom: 28px;
+    }
+    .section-title em { font-style: italic; color: var(--gold-light); }
+    .divider { width: 60px; height: 1px; background: var(--gold); margin-bottom: 40px; }
 
-        /* ビデオ背景の制御 */
-        .video-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 0;
-        }
-        .video-container video {
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-            opacity: 0.4; /* 重厚感を出すために透明度を抑制 */
-        }
-    </style>
+    /* PROBLEM */
+    .problem {
+      background: var(--dark);
+      display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    }
+    .problem-image img {
+      width: 100%; height: 600px; object-fit: cover; display: block; filter: brightness(0.7);
+    }
+    .problem-text { padding: 100px 80px; }
+    .problem-text p {
+      font-size: 15px; line-height: 2.3; color: var(--gray-light);
+      letter-spacing: 0.05em; margin-bottom: 20px;
+    }
+    .problem-list {
+      list-style: none; margin: 32px 0;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px;
+    }
+    .problem-list li {
+      font-size: 13px; line-height: 1.9; color: var(--gray-light);
+      letter-spacing: 0.04em; padding-left: 18px; position: relative;
+    }
+    .problem-list li::before {
+      content: '—'; position: absolute; left: 0; color: var(--gold); font-size: 10px;
+    }
+    .problem-quote {
+      margin-top: 44px; padding: 32px;
+      border-left: 2px solid var(--gold); background: rgba(184,149,90,0.05);
+    }
+    .problem-quote p {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 20px; line-height: 1.8; color: var(--gold-pale); margin: 0;
+    }
+    .problem-quote span {
+      display: block; font-family: 'Montserrat', sans-serif; font-weight: 300;
+      font-size: 10px; letter-spacing: 0.3em; color: var(--gold);
+      text-transform: uppercase; margin-top: 16px;
+    }
+
+    /* STATS */
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--charcoal); }
+    .stat-item {
+      padding: 70px 48px; border-right: 1px solid rgba(184,149,90,0.12); text-align: center;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif; font-weight: 300;
+      font-size: 68px; color: var(--gold); line-height: 1; margin-bottom: 12px;
+    }
+    .stat-unit { font-size: 26px; }
+    .stat-label { font-size: 13px; line-height: 2; color: var(--gray-light); letter-spacing: 0.06em; }
+
+    /* TECHNOLOGY */
+    #technology { background: var(--black); padding: 140px 60px; }
+    .tech-intro { max-width: 680px; margin-bottom: 80px; }
+    .tech-intro p { font-size: 15px; line-height: 2.2; color: var(--gray-light); letter-spacing: 0.05em; }
+    .tech-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .tech-card {
+      background: var(--charcoal); padding: 56px 48px; position: relative; overflow: hidden;
+    }
+    .tech-card::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 100%; height: 2px;
+      background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+    }
+    .tech-number {
+      font-family: 'Cormorant Garamond', serif; font-weight: 300;
+      font-size: 80px; color: rgba(184,149,90,0.08); line-height: 1;
+      position: absolute; top: 20px; right: 28px;
+    }
+    .tech-card h3 {
+      font-family: 'Montserrat', sans-serif; font-weight: 400;
+      font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 12px;
+    }
+    .tech-card h4 {
+      font-family: 'Cormorant Garamond', serif; font-weight: 300;
+      font-size: 26px; color: var(--white); margin-bottom: 18px; line-height: 1.4;
+    }
+    .tech-card p { font-size: 14px; line-height: 2.1; color: var(--gray-light); letter-spacing: 0.04em; }
+    .tech-badge {
+      display: inline-block; margin-top: 24px;
+      font-family: 'Montserrat', sans-serif; font-weight: 300;
+      font-size: 10px; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase;
+      border: 1px solid rgba(184,149,90,0.3); padding: 6px 14px;
+    }
+    .tech-full {
+      background: var(--charcoal); padding: 56px 48px; margin-top: 2px; position: relative;
+    }
+    .tech-full::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 100%; height: 2px;
+      background: linear-gradient(90deg, var(--gold) 0%, transparent 60%);
+    }
+    .tech-full h3 {
+      font-family: 'Montserrat', sans-serif; font-weight: 400;
+      font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 32px;
+    }
+    .tech-full-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+    .tech-sub {
+      background: rgba(184,149,90,0.04); border: 1px solid rgba(184,149,90,0.12);
+      padding: 24px 16px; text-align: center;
+    }
+    .tech-sub-name {
+      font-family: 'Montserrat', sans-serif; font-weight: 400;
+      font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--gold-light); margin-bottom: 10px;
+    }
+    .tech-sub-desc { font-size: 11px; line-height: 1.8; color: var(--gray); letter-spacing: 0.03em; }
+
+    /* BENEFITS */
+    #benefits { background: var(--dark); padding: 140px 60px; }
+    .benefits-intro p { font-size: 15px; line-height: 2.2; color: var(--gray-light); max-width: 600px; letter-spacing: 0.05em; }
+    .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 64px; }
+    .benefit-card { position: relative; overflow: hidden; }
+    .benefit-card img {
+      width: 100%; height: 420px; object-fit: cover; display: block;
+      filter: brightness(0.55); transition: transform 0.6s, filter 0.6s;
+    }
+    .benefit-card:hover img { transform: scale(1.04); filter: brightness(0.45); }
+    .benefit-overlay {
+      position: absolute; inset: 0; padding: 40px;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      background: linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 50%);
+    }
+    .benefit-tag {
+      font-family: 'Montserrat', sans-serif; font-weight: 300;
+      font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 10px;
+    }
+    .benefit-title {
+      font-family: 'Cormorant Garamond', serif; font-weight: 300;
+      font-size: 24px; color: var(--white); margin-bottom: 12px; line-height: 1.3;
+    }
+    .benefit-desc { font-size: 13px; line-height: 1.9; color: var(--gray-light); letter-spacing: 0.04em; }
+
+    /* MODES */
+    .modes { background: var(--black); padding: 140px 60px; }
+    .modes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 64px; }
+    .mode-card {
+      background: var(--charcoal); padding: 48px 40px;
+      border-top: 2px solid rgba(184,149,90,0.2);
+    }
+    .mode-card.active { border-top-color: var(--gold); }
+    .mode-num {
+      font-family: 'Cormorant Garamond', serif; font-weight: 300;
+      font-size: 56px; color: rgba(184,149,90,0.1); line-height: 1; margin-bottom: 16px;
+    }
+    .mode-card h3 {
+      font-family: 'Cormorant Garamond', serif; font-weight: 400;
+      font-size: 22px; color: var(--gold-light); margin-bottom: 12px;
+    }
+    .mode-card p { font-size: 14px; line-height: 2; color: var(--gray-light); letter-spacing: 0.04em; }
+    .mode-ai {
+      margin-top: 2px; background: rgba(184,149,90,0.05);
+      border: 1px solid rgba(184,149,90,0.2); border-top: 2px solid var(--gold);
+      padding: 48px; display: grid; grid-template-columns: 1fr 2fr; gap: 48px; align-items: center;
+    }
+    .mode-ai-label {
+      font-family: 'Montserrat', sans-serif; font-weight: 300;
+      font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
+    }
+    .mode-ai h3 {
+      font-family: 'Cormorant Garamond', serif; font-weight: 300;
+      font-size: 32px; color: var(--white); line-height: 1.4;
+    }
+    .mode-ai p { font-size: 14px; line-height: 2.1; color: var(--gray-light); letter-spacing: 0.04em; }
+
+    /* PRODUCT */
+    #product { background: var(--dark); padding: 140px 60px; }
+    .product-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .product-image img { width: 100%; display: block; }
+    .product-tag {
+      font-family: 'Montserrat', sans-serif; font-weight: 300;
+      font-size: 10px; letter-spacing: 0.45em; text-transform: uppercase;
+      color: var(--gold); border: 1px solid rgba(184,149,90,0.3);
+      display: inline-block; padding: 6px 16px; margin-bottom: 32px;
+    }
+    .product-price {
+      font-family: 'Cormorant Garamond', serif; font-weight: 300;
+      font-size: 52px; color: var(--white); margin: 28px 0 8px; letter-spacing: 0.02em;
+    }
+    .product-price-note { font-size: 12px; color: var(--gray); letter-spacing: 0.1em; margin-bottom: 40px; }
+    .product-specs { list-style: none; margin-bottom: 40px; border-top: 1px solid rgba(184,149,90,0.15); }
+    .product-specs li {
+      display: flex; justify-content: space-between;
+      padding: 14px 0; border-bottom: 1px solid rgba(184,149,90,0.15);
+      font-size: 13px; letter-spacing: 0.04em; gap: 20px;
+    }
+    .product-specs li span:first-child { color: var(--gray); flex-shrink: 0; }
+    .product-specs li span:last-child { color: var(--white); text-align: right; }
+    .product-warranty {
+      background: rgba(184,149,90,0.05); border: 1px solid rgba(184,149,90,0.15);
+      padding: 20px 24px; font-size: 13px; line-height: 1.9;
+      color: var(--gray-light); margin-bottom: 36px; letter-spacing: 0.04em;
+    }
+    .product-warranty strong { color: var(--gold-light); font-weight: 400; }
+    .btn-gold-large {
+      display: block; text-align: center;
+      font-family: 'Montserrat', sans-serif; font-weight: 400;
+      font-size: 13px; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--black); background: var(--gold); padding: 22px 40px;
+      text-decoration: none; transition: background 0.3s; margin-bottom: 12px;
+    }
+    .btn-gold-large:hover { background: var(--gold-light); }
+    .btn-note { text-align: center; font-size: 11px; color: var(--gray); letter-spacing: 0.08em; }
+
+    /* FAQ */
+    .faq { background: var(--black); padding: 140px 60px; }
+    .faq-list { margin-top: 64px; max-width: 860px; }
+    .faq-item { border-bottom: 1px solid rgba(184,149,90,0.15); }
+    .faq-q {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      padding: 28px 0; cursor: pointer; gap: 24px;
+    }
+    .faq-q-text { font-size: 15px; line-height: 1.7; letter-spacing: 0.04em; color: var(--white); }
+    .faq-icon {
+      flex-shrink: 0; width: 24px; height: 24px;
+      border: 1px solid rgba(184,149,90,0.4);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); font-size: 16px;
+      font-family: 'Montserrat', sans-serif; font-weight: 300;
+      margin-top: 2px; transition: background 0.3s;
+    }
+    .faq-item.open .faq-icon { background: var(--gold); color: var(--black); }
+    .faq-a {
+      font-size: 14px; line-height: 2.1; color: var(--gray-light);
+      letter-spacing: 0.04em; padding: 0 0 28px 0; display: none; max-width: 720px;
+    }
+    .faq-item.open .faq-a { display: block; }
+
+    /* CTA FINAL */
+    .cta-final {
+      background: var(--charcoal); padding: 140px 60px; text-align: center; position: relative; overflow: hidden;
+    }
+    .cta-final::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 100%, rgba(184,149,90,0.08) 0%, transparent 65%);
+    }
+    .cta-final-content { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+    .cta-final-eyebrow {
+      font-family: 'Montserrat', sans-serif; font-weight: 300;
+      font-size: 10px; letter-spacing: 0.5em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 32px;
+    }
+    .cta-final h2 {
+      font-family: 'Cormorant Garamond', serif; font-weight: 300;
+      font-size: clamp(32px, 4vw, 54px); line-height: 1.4;
+      color: var(--white); margin-bottom: 24px;
+    }
+    .cta-final h2 em { font-style: italic; color: var(--gold-light); }
+    .cta-final p { font-size: 14px; line-height: 2.2; color: var(--gray-light); margin-bottom: 48px; letter-spacing: 0.05em; }
+    .cta-price { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 56px; color: var(--white); display: block; }
+    .cta-price-note { font-size: 12px; color: var(--gray); letter-spacing: 0.1em; margin-top: 4px; margin-bottom: 44px; }
+    .btn-gold-xl {
+      display: inline-block; font-family: 'Montserrat', sans-serif; font-weight: 400;
+      font-size: 13px; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--black); background: var(--gold); padding: 22px 64px;
+      text-decoration: none; transition: background 0.3s, transform 0.2s;
+    }
+    .btn-gold-xl:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .cta-sub { font-size: 11px; color: var(--gray); letter-spacing: 0.08em; margin-top: 20px; }
+
+    /* FOOTER */
+    footer {
+      background: var(--black); border-top: 1px solid rgba(184,149,90,0.12);
+      padding: 60px; display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-logo { font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 13px; letter-spacing: 0.3em; color: var(--gold); }
+    .footer-links { display: flex; gap: 32px; }
+    .footer-links a {
+      font-family: 'Montserrat', sans-serif; font-weight: 300;
+      font-size: 10px; letter-spacing: 0.25em; color: var(--gray);
+      text-decoration: none; text-transform: uppercase; transition: color 0.3s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy { font-size: 11px; color: var(--gray); letter-spacing: 0.1em; }
+    .footer-disclaimer {
+      text-align: center; padding: 20px 60px 40px;
+      font-size: 11px; color: rgba(136,136,136,0.55); letter-spacing: 0.06em; line-height: 1.9;
+    }
+
+    @media (max-width: 960px) {
+      nav { padding: 20px 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 0 24px 80px; }
+      #technology, #benefits, #product, .modes, .faq, .cta-final { padding: 80px 24px; }
+      .problem { grid-template-columns: 1fr; }
+      .problem-image img { height: 320px; }
+      .problem-text { padding: 60px 24px; }
+      .problem-list { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr; }
+      .stat-item { border-right: none; border-bottom: 1px solid rgba(184,149,90,0.12); }
+      .tech-grid { grid-template-columns: 1fr; }
+      .tech-full-grid { grid-template-columns: repeat(2, 1fr); }
+      .benefits-grid, .modes-grid { grid-template-columns: 1fr; }
+      .mode-ai { grid-template-columns: 1fr; }
+      .product-layout { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 24px; text-align: center; padding: 40px 24px; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
 </head>
-<body class="bg-white overflow-x-hidden">
+<body>
 
-    <!-- Header: 常に固定し、信頼感を醸成 -->
-    <header class="fixed w-full z-50 transition-all duration-500 bg-white/80 backdrop-blur-md border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-elegant font-bold tracking-tighter text-[#0f172a]">
-                OlyLife <span class="text-[#b48a54]">SHAKEN</span>
-            </div>
-            <nav class="hidden md:flex space-x-8 text-sm font-medium tracking-widest uppercase">
-                <a href="#technology" class="hover:text-[#b48a54] transition-colors">Technology</a>
-                <a href="#benefits" class="hover:text-[#b48a54] transition-colors">Benefits</a>
-                <a href="#product" class="hover:text-[#b48a54] transition-colors">Product</a>
-            </nav>
-            <a href="https://line.me" target="_blank" rel="noopener noreferrer" class="bg-[#b48a54] text-white px-6 py-2 rounded-full text-xs font-bold tracking-widest btn-hover">
-                LINEで問い合わせる
-            </a>
-        </div>
-    </header>
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">OlyLife SHAKEN</a>
+  <ul class="nav-links">
+    <li><a href="#technology">Technology</a></li>
+    <li><a href="#benefits">Benefits</a></li>
+    <li><a href="#product">Product</a></li>
+  </ul>
+  <a href="https://line.me" class="nav-cta">LINEで問い合わせる</a>
+</nav>
 
-    <!-- Hero Section: シネマティックなビデオ背景 -->
-    <section class="relative h-screen flex items-center justify-center bg-[#0f172a] overflow-hidden">
-        
-        <div class="video-container">
-            <!-- REPLACE: 動画URL（mp4形式推奨） -->
-            <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1600">
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-business-center-skyscrapers-at-night-4122-large.mp4" type="video/mp4">
-            </video>
-            <!-- 視認性を確保するためのオーバーレイ -->
-            <div class="absolute inset-0 bg-gradient-to-b from-[#0f172a]/90 via-transparent to-[#0f172a]"></div>
-        </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">For Top Executives</div>
+    <h1 class="hero-headline">
+      その腰の重みは、<br>
+      <em>経営判断のノイズ</em>ではないか。
+    </h1>
+    <p class="hero-sub">
+      座りっぱなしの取締役会、長距離フライト、極限の緊張感。<br>
+      蓄積された身体の滞りは、思考の明晰さを静かに奪います。<br>
+      OlyLife Shakenは、あなたの時間を1秒も奪わず、<br>
+      細胞レベルのコンディショニングを「巻くだけ」で実現します。
+    </p>
+    <div class="hero-cta-group">
+      <a href="https://line.me" class="btn-primary">公式LINEで特別案内を受け取る</a>
+      <a href="#technology" class="btn-secondary">テクノロジーを見る</a>
+    </div>
+  </div>
+</section>
 
-        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center text-white">
-            <p class="reveal font-elegant text-lg md:text-xl tracking-[0.3em] text-[#b48a54] mb-6">FOR TOP EXECUTIVES</p>
-            <h1 class="reveal font-elegant text-4xl md:text-7xl font-bold leading-tight mb-8">
-                その腰に、科学の光を。<br>
-                <span class="text-gradient">決断を支える、30分間の細胞投資。</span>
-            </h1>
-            <p class="reveal text-gray-400 max-w-2xl mx-auto mb-10 text-sm md:text-base leading-loose tracking-widest">
-                多忙を極めるリーダーに、休息の時間はない。だからこそ、「巻くだけ」で深部を整える。<br class="hidden md:block">
-                テラヘルツ×PEMF。世界が認めたテクノロジーが、あなたの経営資源を最大化する。
-            </p>
-            <div class="reveal">
-                <a href="https://line.me" class="inline-block bg-[#b48a54] text-white px-10 py-5 rounded-sm font-bold tracking-widest text-sm btn-hover border border-[#b48a54]">
-                    公式LINEで特別案内を受け取る
-                </a>
-            </div>
-        </div>
+<!-- PROBLEM -->
+<div class="problem">
+  <div class="problem-image">
+    <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=800" alt="Executive" />
+  </div>
+  <div class="problem-text">
+    <div class="section-label">The Problem</div>
+    <h2 class="section-title">多忙なリーダーが<br>見落としている<em>リスク</em></h2>
+    <div class="divider"></div>
+    <p>一流の経営者にとって、身体は唯一無二の経営資源です。しかし多くのリーダーが、多忙を理由にそのメンテナンスを後回しにしています。</p>
+    <p>あなたにも、こうした心当たりはないでしょうか。</p>
+    <ul class="problem-list">
+      <li>長時間のデスクワーク後の腰の疲労感</li>
+      <li>年々落ちていく代謝と体型の変化</li>
+      <li>お腹周りの冷え・むくみ</li>
+      <li>運動・ケアの習慣が続かない</li>
+      <li>移動中・フライト後の腰への負担</li>
+      <li>胃腸の不調・消化の悪さ</li>
+    </ul>
+    <div class="problem-quote">
+      <p>健康管理もまた、重要な経営判断の一つである。</p>
+      <span>Management Truth</span>
+    </div>
+  </div>
+</div>
 
-        <!-- スクロール誘導 -->
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-            <div class="w-px h-16 bg-gradient-to-b from-transparent to-[#b48a54]"></div>
-        </div>
-    </section>
+<!-- STATS -->
+<div class="stats">
+  <div class="stat-item">
+    <div class="stat-num">7<span class="stat-unit">種</span></div>
+    <div class="stat-label">業務レベルの痩身テクノロジーを<br>1台に凝縮</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">30<span class="stat-unit">分</span></div>
+    <div class="stat-label">1回の使用で完了する<br>細胞レベルのコンディショニング</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">20<span class="stat-unit">cm</span></div>
+    <div class="stat-label">PEMFが到達する<br>生体組織の深度</div>
+  </div>
+</div>
 
-    <!-- Problem Section: 経営者の真実に迫る -->
-    <section class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="reveal">
-                    <h2 class="font-elegant text-3xl md:text-4xl font-bold mb-8 leading-tight">
-                        その「腰の重み」は、<br>
-                        経営判断のノイズではないか？
-                    </h2>
-                    <div class="space-y-6 text-gray-600 leading-relaxed text-sm md:text-base">
-                        <p>座りっぱなしの取締役会、長距離のフライト、極限の緊張感。蓄積された身体の「滞り」は、知らぬ間に思考の明晰さを奪います。</p>
-                        <p>一流の経営者にとって、身体は唯一無二の経営資源です。しかし、多くのリーダーが多忙を理由にメンテナンスを後回しにしています。</p>
-                        <p class="font-bold text-[#0f172a]">OlyLife Shaken Massagerは、あなたの貴重な時間を1秒も奪いません。仕事をしながら、移動しながら、細胞レベルでのコンディショニングを可能にします。</p>
-                    </div>
-                </div>
-                <div class="reveal relative">
-                    <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=800" alt="Executive Performance" class="rounded-lg shadow-2xl">
-                    <div class="absolute -bottom-6 -left-6 bg-[#b48a54] p-8 text-white max-w-xs shadow-xl hidden md:block">
-                        <p class="text-xs tracking-[0.2em] mb-2 uppercase">Management Truth</p>
-                        <p class="font-elegant text-lg">健康管理もまた、<br>重要な経営判断の一つである。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- TECHNOLOGY -->
+<section id="technology">
+  <div class="tech-intro">
+    <div class="section-label">The Science</div>
+    <h2 class="section-title">科学が証明した、<br><em>巻く「細胞投資」</em></h2>
+    <div class="divider"></div>
+    <p>一般的な家庭用機器は1〜2機能が限界です。Shakenは業務レベルの痩身・コンディショニング機能を7種類搭載し、お腹・腰まわりに集中アプローチするよう設計された次世代スマートデバイスです。</p>
+  </div>
+  <div class="tech-grid">
+    <div class="tech-card">
+      <div class="tech-number">01</div>
+      <h3>Core Technology</h3>
+      <h4>PEMF<br>パルス電磁界</h4>
+      <p>超低周波PEMFの媒質横断透過技術により、体内20cmの生体組織にエネルギー介入が可能。細胞膜電位とミトコンドリアの代謝経路を調節し、炎症因子の発生を抑制。腸炎・腰痛・婦人科系疾患など深部からのケアをサポートします。世界中のアスリートやヘルスケア現場で活用される、最先端の自己管理テクノロジーです。</p>
+      <span class="tech-badge">Deep Tissue · 20cm Penetration</span>
+    </div>
+    <div class="tech-card">
+      <div class="tech-number">02</div>
+      <h3>Core Technology</h3>
+      <h4>フォーカス超音波<br>＋高周波振動・温熱</h4>
+      <p>皮下脂肪層（10〜20mm）まで超高周波共振により脂肪細胞膜の解離と脂質分解を促進。高周波振動がウエストの筋肉を刺激し脂肪細胞を圧縮。さらに熱エネルギーが腹部組織を活性化し、血液循環を促進して脂肪代謝を加速させます。</p>
+      <span class="tech-badge">Fat Breakdown · Metabolic Boost</span>
+    </div>
+  </div>
+  <div class="tech-full">
+    <h3>7 Technologies in 1 Device — 搭載テクノロジー一覧</h3>
+    <div class="tech-full-grid">
+      <div class="tech-sub">
+        <div class="tech-sub-name">フォーカス超音波</div>
+        <div class="tech-sub-desc">深層脂肪へ直接アプローチ。脂肪細胞膜の解離と脂質分解を促進</div>
+      </div>
+      <div class="tech-sub">
+        <div class="tech-sub-name">高周波振動</div>
+        <div class="tech-sub-desc">代謝アップ・脂肪を柔らかくする。筋肉を刺激しラインを整える</div>
+      </div>
+      <div class="tech-sub">
+        <div class="tech-sub-name">温熱</div>
+        <div class="tech-sub-desc">熱エネルギーで血液循環を促進。脂肪代謝を加速させる</div>
+      </div>
+      <div class="tech-sub">
+        <div class="tech-sub-name">RFラジオ波</div>
+        <div class="tech-sub-desc">皮膚下3〜5mmまで到達。コラーゲン再生・たるみ・妊娠線ケア</div>
+      </div>
+      <div class="tech-sub">
+        <div class="tech-sub-name">赤外線光</div>
+        <div class="tech-sub-desc">表皮層を透過し代謝廃棄物を排除。シミ・シワ・傷跡のケアにも</div>
+      </div>
+      <div class="tech-sub">
+        <div class="tech-sub-name">エアバッグマッサージ</div>
+        <div class="tech-sub-desc">複数エアバッグの加圧・解放で手のひらのマッサージ動作を再現</div>
+      </div>
+      <div class="tech-sub">
+        <div class="tech-sub-name">PEMF</div>
+        <div class="tech-sub-desc">ミトコンドリアを活性化。深部の炎症緩和・腸の動きをサポート</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Technology Section: 科学的根拠 -->
-    <section id="technology" class="py-32 bg-[#0f172a] text-white overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20 reveal">
-                <h2 class="font-elegant text-3xl md:text-5xl font-bold mb-4">THE SCIENCE</h2>
-                <div class="w-24 h-1 bg-[#b48a54] mx-auto"></div>
-                <p class="mt-8 text-gray-400 tracking-[0.2em]">科学が証明した、巻く「細胞投資」</p>
-            </div>
+<!-- BENEFITS -->
+<section id="benefits">
+  <div class="benefits-intro">
+    <div class="section-label">Time Is Asset</div>
+    <h2 class="section-title">あらゆるシーンを、<br><em>極上のリカバリータイム</em>へ。</h2>
+    <div class="divider"></div>
+    <p>ボタン2つの超シンプル操作。仕事をしながら、移動しながら、あなたの生活スタイルに自然と馴染みます。</p>
+  </div>
+  <div class="benefits-grid">
+    <div class="benefit-card">
+      <img src="https://images.unsplash.com/photo-1554774853-aae0a22c8aa4?auto=format&fit=crop&q=80&w=800" alt="Office" />
+      <div class="benefit-overlay">
+        <div class="benefit-tag">Office &amp; Boardroom</div>
+        <div class="benefit-title">スーツの下に。<br>会議中も最高のコンディションで。</div>
+        <div class="benefit-desc">スリムな設計で目立たず装着可能。重要な決断の場でも、身体のメンテナンスは止まりません。パソコン操作もそのまま継続できます。</div>
+      </div>
+    </div>
+    <div class="benefit-card">
+      <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&q=80&w=800" alt="Travel" />
+      <div class="benefit-overlay">
+        <div class="benefit-tag">Transit &amp; Travel</div>
+        <div class="benefit-title">移動中が、<br>ウェルネスサロンに変わる。</div>
+        <div class="benefit-desc">長時間フライト・新幹線移動など、腰への負担が最大になる時間こそShakenの出番。飛行機・電車・車内での使用に適したポータブル設計です。</div>
+      </div>
+    </div>
+    <div class="benefit-card">
+      <img src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&q=80&w=800" alt="Golf" />
+      <div class="benefit-overlay">
+        <div class="benefit-tag">Golf &amp; Leisure</div>
+        <div class="benefit-title">週末のパフォーマンスを<br>底上げする。</div>
+        <div class="benefit-desc">プレー前のウォーミングアップ、プレー後のメンテナンスに。腰を支え可動域を確保。ヨガやランニング中も使用可能です。</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="reveal glass p-10 rounded-lg">
-                    <div class="text-[#b48a54] mb-6">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                    </div>
-                    <h3 class="font-elegant text-2xl font-bold mb-4">テラヘルツ波：1兆回の共鳴</h3>
-                    <p class="text-sm text-gray-400 leading-loose">
-                        1秒間に1兆回という微細な振動エネルギーが、身体の深部（コア）まで到達。停滞していた流れを呼び覚まし、深部からの加温と活性を促します。
-                    </p>
-                </div>
-                <div class="reveal glass p-10 rounded-lg" style="transition-delay: 200ms;">
-                    <div class="text-[#b48a54] mb-6">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-                    </div>
-                    <h3 class="font-elegant text-2xl font-bold mb-4">PEMF：細胞へのチャージ</h3>
-                    <p class="text-sm text-gray-400 leading-loose">
-                        パルス電磁界（PEMF）が、身体の電荷バランスを整えます。これは、世界中のアスリートやヘルスケアの現場で活用されている、最先端の自己管理テクノロジーです。
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- MODES -->
+<div class="modes">
+  <div class="section-label">Smart Mode</div>
+  <h2 class="section-title">目的に応じた<br><em>3つのモード</em></h2>
+  <div class="divider"></div>
+  <div class="modes-grid">
+    <div class="mode-card active">
+      <div class="mode-num">01</div>
+      <h3>ボディシェイプモード</h3>
+      <p>脂肪へのターゲットアプローチ。超音波・振動・温熱を複合的に使用し、お腹・腰まわりの脂肪ケアに集中します。</p>
+    </div>
+    <div class="mode-card">
+      <div class="mode-num">02</div>
+      <h3>マッサージモード</h3>
+      <p>ウエストの健康と内臓・深層ケアに特化。PEMFとエアバッグマッサージで内側から整えます。腸の不調・腰痛・婦人科系ケアにも。</p>
+    </div>
+    <div class="mode-card">
+      <div class="mode-num">03</div>
+      <h3>温熱モード</h3>
+      <p>温めることで血液循環を促進。お腹の冷えや婦人科系のケアに。リラックスしながら使用できます。</p>
+    </div>
+  </div>
+  <div class="mode-ai">
+    <div>
+      <div class="mode-ai-label">AI Mode — OlyWatch連携</div>
+      <h3>自分以上に、<br>自分を理解する。</h3>
+    </div>
+    <p>シェイクン1台のご購入につき、OlyWatchを1台プレゼント。17種類のセンサーが心拍数・血中酸素濃度・睡眠の質を追跡し、その日の体調に応じて最適なモードを自動選択するAIモードが使用可能に。Bluetooth連携で、ランニングなどの運動中もスマートに操作できます。</p>
+  </div>
+</div>
 
-    <!-- Scenarios: 経営者の1日に溶け込む -->
-    <section id="benefits" class="py-24 bg-[#f8fafc]">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
-                <div class="max-w-xl">
-                    <h2 class="font-elegant text-3xl md:text-4xl font-bold mb-4">TIME IS ASSET</h2>
-                    <p class="text-gray-500 text-sm tracking-widest">あらゆるシーンを、極上のリカバリータイムへ。</p>
-                </div>
-            </div>
+<!-- PRODUCT -->
+<section id="product">
+  <div class="product-layout">
+    <div class="product-image">
+      <img src="https://raw.githubusercontent.com/hick81m-ai/sample_CEO/main/assets/AOT_CEO_last.webp" alt="OlyLife Shaken Massager" />
+    </div>
+    <div class="product-info">
+      <span class="product-tag">Authentic Quality</span>
+      <div class="section-label">OlyLife Shaken Massager</div>
+      <h2 class="section-title">一流が辿り着く、<br><em>究極のセルフマネジメント</em></h2>
+      <div class="divider"></div>
+      <div class="product-price">¥198,000<span style="font-size:18px;color:var(--gray);"> （税込）</span></div>
+      <div class="product-price-note">お支払い方法：銀行振込 / クレジットカード</div>
+      <ul class="product-specs">
+        <li><span>搭載テクノロジー</span><span>7種（PEMF・超音波・RF・赤外線・振動・温熱・エアバッグ）</span></li>
+        <li><span>対応ウエスト</span><span>60〜150cm</span></li>
+        <li><span>対応体重</span><span>40〜130kg</span></li>
+        <li><span>操作</span><span>本体ボタン2つ／OlyWatch連携</span></li>
+        <li><span>肌面素材</span><span>医療グレードシリコン（アレルギー対応）</span></li>
+        <li><span>AIモード</span><span>付属OlyWatch連携で使用可</span></li>
+        <li><span>付属品</span><span>OlyWatch 1台・日本語取扱説明書</span></li>
+        <li><span>保証</span><span>1年間故障・新品交換保証</span></li>
+        <li><span>お手入れ</span><span>アルコールウェットティッシュで清拭可</span></li>
+      </ul>
+      <div class="product-warranty">
+        <strong>1年間・新品交換保証付き。</strong><br>
+        初期不良はもちろん、1年以内の故障は新品交換にて対応いたします。安心してご使用ください。
+      </div>
+      <a href="https://line.me" class="btn-gold-large">LINEで価格・在庫を問い合わせる</a>
+      <div class="btn-note">現在、世界的な注文殺到により1〜2ヶ月待ちの場合がございます。お早めにご確認ください。</div>
+    </div>
+  </div>
+</section>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="reveal group">
-                    <div class="overflow-hidden rounded-lg mb-6 shadow-lg">
-                        <img src="https://images.unsplash.com/photo-1554774853-aae0a22c8aa4?auto=format&fit=crop&q=80&w=800" alt="Office Work" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
-                    </div>
-                    <h4 class="font-bold mb-2 uppercase tracking-tighter">Office & Boardroom</h4>
-                    <p class="text-xs text-gray-500 leading-relaxed">スーツの下に巻いても目立たないスリム設計。重要な決断を行う会議中も、あなたのコンディションは最高潮に保たれます。</p>
-                </div>
-                <!-- FIXED: クラス名とテキストの混入を修正 -->
-                <div class="reveal group" style="transition-delay: 150ms;">
-                    <div class="overflow-hidden rounded-lg mb-6 shadow-lg">
-                        <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&q=80&w=800" alt="Travel" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
-                    </div>
-                    <h4 class="font-bold mb-2 uppercase tracking-tighter">Transit & Travel</h4>
-                    <p class="text-xs text-gray-500 leading-relaxed">長時間の移動中こそ、腰への負担が最大。ポータブルなShakenなら、飛行機や車内が移動型ウェルネスサロンに変わります。</p>
-                </div>
-                <div class="reveal group" style="transition-delay: 300ms;">
-                    <div class="overflow-hidden rounded-lg mb-6 shadow-lg">
-                        <img src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&q=80&w=800" alt="Golf" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
-                    </div>
-                    <h4 class="font-bold mb-2 uppercase tracking-tighter">Golf & Leisure</h4>
-                    <p class="text-xs text-gray-500 leading-relaxed">プレー前のウォーミングアップ、プレー後のメンテナンスに。腰を支え、可動域を確保し、週末のパフォーマンスを底上げします。</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- FAQ -->
+<div class="faq">
+  <div class="section-label">FAQ</div>
+  <h2 class="section-title">よくあるご質問</h2>
+  <div class="divider"></div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">仕事中、パソコン操作をしながら使用できますか？</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">可能です。デスクワーク中もパソコン操作をしながらお使いいただけます。本体ボタン2つのシンプル操作で、作業を止めることなく使い始められます。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">1日に何回使用できますか？</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">1日2回まで、4時間以上の間隔を空けてご使用ください。毎日の継続的なケアが効果を高めます。ぜひ日課としてご活用ください。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">移動中（飛行機・新幹線）でも使えますか？</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">使用可能です。座ったまま・横になった状態でもお使いいただけます。ただし振動・エアバッグ機能があるため無音ではございません。静粛が必要な場面でのご使用はご注意ください。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">操作は複雑ですか？</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">本体には電源とモード切替の2ボタンのみ。モニターに残り時間・モード・強さがわかりやすく表示されます。日本語取扱説明書も付属しており、機械が苦手な方でも安心してお使いいただけます。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">どのサイズの方まで対応していますか？</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">ウエスト60〜150cm、体重40〜130kgの方に対応しています。70〜120度の自由調整が可能で、前屈や運動中も滑り落ちない設計です。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">納期はどのくらいかかりますか？</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">通常1週間〜10日でのお届けですが、現在世界的に注文が殺到しており1〜2ヶ月ほどお時間をいただく場合がございます。お早めのご注文をおすすめします。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">保証・返品について教えてください。</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">1年間の故障・新品交換保証付きです。お客様都合での返品・返金は承っておりませんが、初期不良および1年以内の故障は新品交換にて対応いたします。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">痩身サロン・法人での導入は可能ですか？</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">痩身サロンへの業務導入にも最適です。20分間のShakenマッサージをメニュー化することで、新たな収益ラインとしてご活用いただけます。法人・サロン様からのお問い合わせはLINEよりご相談ください。</div>
+    </div>
+  </div>
+</div>
 
-    <!-- Product Display: 詳細とCTA -->
-    <section id="product" class="py-32 bg-white">
-        <div class="max-w-5xl mx-auto px-6 text-center reveal">
-            <h2 class="font-elegant text-3xl md:text-5xl font-bold mb-12 uppercase tracking-tighter text-[#0f172a]">OlyLife Shaken Massager</h2>
-            
-            <div class="relative inline-block mb-12">
-                <!-- PRODUCT IMAGE: 指定されたURLを反映 -->
-                <div class="w-full max-w-lg mx-auto bg-[#f8fafc] rounded-lg overflow-hidden shadow-2xl p-4 border border-gray-100">
-                    <img src="https://raw.githubusercontent.com/hick81m-ai/sample_CEO/main/assets/AOT_CEO_last.webp" alt="OlyLife Shaken Massager Main Visual" class="w-full h-auto object-cover rounded-md">
-                </div>
-                <div class="absolute top-0 right-0 bg-[#0f172a] text-[#b48a54] p-6 rounded-full text-xs font-bold tracking-widest shadow-xl">
-                    AUTHENTIC<br>QUALITY
-                </div>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-12 text-left bg-[#0f172a] p-12 rounded-sm text-white shadow-2xl">
-                <div>
-                    <h3 class="font-elegant text-2xl font-bold mb-6 text-[#b48a54]">最高峰の仕様</h3>
-                    <ul class="space-y-4 text-sm text-gray-300">
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-[#b48a54] rounded-full mr-3"></span> デュアル・コアテクノロジー（テラヘルツ波×PEMF）</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-[#b48a54] rounded-full mr-3"></span> 人間工学に基づいた超スリム・フィット設計</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-[#b48a54] rounded-full mr-3"></span> ワンタッチ操作＆スマートインテリジェント制御</li>
-                    </ul>
-                </div>
-                <div class="border-l border-gray-700 pl-12 flex flex-col justify-center">
-                    <p class="text-xs tracking-widest text-gray-400 mb-2 uppercase font-bold">Purchase Information</p>
-                    <p class="text-xl font-elegant mb-6 italic">「一流が辿り着く、究極のセルフマネジメント」</p>
-                    <a href="https://line.me" class="block text-center bg-white text-[#0f172a] py-4 font-bold rounded-sm hover:bg-[#b48a54] hover:text-white transition-all btn-hover">
-                        LINEで価格・在庫を問い合わせる
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- CTA FINAL -->
+<div class="cta-final">
+  <div class="cta-final-content">
+    <div class="cta-final-eyebrow">Your Next Investment</div>
+    <h2>身体という、<br>最も重要な<em>経営資源</em>へ。</h2>
+    <p>
+      時間を奪わない。手間をかけない。<br>
+      巻くだけで、細胞レベルから整える30分間。<br>
+      一流のリーダーが選ぶ、究極のセルフマネジメントを今すぐ。
+    </p>
+    <div class="cta-price">¥198,000</div>
+    <div class="cta-price-note">OlyWatch 1台付属 · 1年間新品交換保証 · 銀行振込／カード払い対応</div>
+    <a href="https://line.me" class="btn-gold-xl">公式LINEで今すぐ問い合わせる</a>
+    <div class="cta-sub">現在、世界的な注文殺到により1〜2ヶ月待ちの場合がございます。お早めにご確認ください。</div>
+  </div>
+</div>
 
-    <!-- Footer -->
-    <footer class="bg-[#0f172a] py-20 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <div class="text-2xl font-elegant font-bold tracking-tighter text-white mb-8">
-                OlyLife <span class="text-[#b48a54]">SHAKEN</span>
-            </div>
-            <p class="text-gray-500 text-[10px] md:text-xs mb-8 tracking-widest leading-loose max-w-3xl mx-auto">
-                ※本製品は健康維持を目的としたコンディショニング・ギアであり、医療機器ではありません。<br>
-                効果には個人差があります。日常の健康管理の一助としてご活用ください。
-            </p>
-            <div class="flex justify-center space-x-6 mb-12">
-                <a href="#" class="text-gray-400 hover:text-[#b48a54] text-xs tracking-widest transition-colors">プライバシーポリシー</a>
-                <a href="#" class="text-gray-400 hover:text-[#b48a54] text-xs tracking-widest transition-colors">特定商取引法に基づく表記</a>
-            </div>
-            <p class="text-gray-600 text-[10px] tracking-widest">
-                © 2024 OlyLife Shaken Massager. All Rights Reserved.
-            </p>
-        </div>
-    </footer>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">OlyLife SHAKEN</div>
+  <div class="footer-links">
+    <a href="#">プライバシーポリシー</a>
+    <a href="#">特定商取引法に基づく表記</a>
+  </div>
+  <div class="footer-copy">© 2025 OlyLife Shaken Massager. All Rights Reserved.</div>
+</footer>
+<div class="footer-disclaimer">
+  ※本製品は健康維持を目的としたコンディショニング・ギアであり、医療機器ではありません。効果には個人差があります。日常の健康管理の一助としてご活用ください。
+</div>
 
-    <!-- Animation & Logic Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // スクロール出現アニメーションの制御
-            const reveals = document.querySelectorAll('.reveal');
-            const revealOnScroll = () => {
-                const windowHeight = window.innerHeight;
-                reveals.forEach(el => {
-                    const elTop = el.getBoundingClientRect().top;
-                    const revealPoint = 100;
-                    if (elTop < windowHeight - revealPoint) {
-                        el.classList.add('active');
-                    }
-                });
-            };
-
-            window.addEventListener('scroll', revealOnScroll);
-            revealOnScroll(); // 初回実行
-
-            // ヘッダーのスクロールエフェクト
-            const header = document.querySelector('header');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 100) {
-                    header.classList.add('py-2', 'shadow-lg');
-                    header.classList.remove('py-4');
-                } else {
-                    header.classList.add('py-4');
-                    header.classList.remove('py-2', 'shadow-lg');
-                }
-            });
-        });
-    </script>
+<script>
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-icon').textContent = '+';
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      el.querySelector('.faq-icon').textContent = '×';
+    }
+  }
+</script>
 </body>
 </html>
