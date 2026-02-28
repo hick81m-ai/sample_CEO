@@ -79,8 +79,7 @@
       display: flex; align-items: center; gap: 16px;
     }
     .hero-eyebrow::before {
-      content: ''; display: inline-block;
-      width: 40px; height: 1px; background: var(--gold);
+      content: ''; display: inline-block; width: 40px; height: 1px; background: var(--gold);
     }
     .hero-headline {
       font-family: 'Cormorant Garamond', serif; font-weight: 300;
@@ -233,31 +232,64 @@
     }
     .tech-sub-desc { font-size: 11px; line-height: 1.8; color: var(--gray); letter-spacing: 0.03em; }
 
+    /* EVIDENCE */
+    .evidence { background: var(--dark); padding: 100px 60px; }
+    .evidence-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1100px;
+    }
+    .evidence-text p { font-size: 14px; line-height: 2.2; color: var(--gray-light); letter-spacing: 0.04em; margin-bottom: 16px; }
+    .evidence-refs {
+      list-style: none; margin-top: 32px; border-top: 1px solid rgba(184,149,90,0.15);
+    }
+    .evidence-refs li {
+      font-size: 11px; line-height: 1.8; color: var(--gray);
+      letter-spacing: 0.03em; padding: 10px 0;
+      border-bottom: 1px solid rgba(184,149,90,0.08);
+    }
+    .evidence-refs li::before { content: '— '; color: var(--gold); }
+    .evidence-chart {
+      background: var(--charcoal); padding: 40px;
+      border: 1px solid rgba(184,149,90,0.15);
+    }
+    .evidence-chart-title {
+      font-family: 'Montserrat', sans-serif; font-weight: 300;
+      font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 20px;
+    }
+    .evidence-chart p {
+      font-size: 13px; line-height: 2; color: var(--gray-light); letter-spacing: 0.04em;
+    }
+    .evidence-source {
+      margin-top: 20px; font-size: 11px; color: var(--gray);
+      letter-spacing: 0.03em; line-height: 1.8;
+      border-top: 1px solid rgba(184,149,90,0.1); padding-top: 16px;
+    }
+
     /* BENEFITS */
     #benefits { background: var(--dark); padding: 140px 60px; }
     .benefits-intro p { font-size: 15px; line-height: 2.2; color: var(--gray-light); max-width: 600px; letter-spacing: 0.05em; }
-    .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 64px; }
+    .benefits-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 64px; }
     .benefit-card { position: relative; overflow: hidden; }
     .benefit-card img {
-      width: 100%; height: 420px; object-fit: cover; display: block;
+      width: 100%; height: 360px; object-fit: cover; display: block;
       filter: brightness(0.55); transition: transform 0.6s, filter 0.6s;
     }
     .benefit-card:hover img { transform: scale(1.04); filter: brightness(0.45); }
     .benefit-overlay {
-      position: absolute; inset: 0; padding: 40px;
+      position: absolute; inset: 0; padding: 32px;
       display: flex; flex-direction: column; justify-content: flex-end;
       background: linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 50%);
     }
     .benefit-tag {
       font-family: 'Montserrat', sans-serif; font-weight: 300;
       font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 10px;
+      color: var(--gold); margin-bottom: 8px;
     }
     .benefit-title {
       font-family: 'Cormorant Garamond', serif; font-weight: 300;
-      font-size: 24px; color: var(--white); margin-bottom: 12px; line-height: 1.3;
+      font-size: 20px; color: var(--white); margin-bottom: 10px; line-height: 1.3;
     }
-    .benefit-desc { font-size: 13px; line-height: 1.9; color: var(--gray-light); letter-spacing: 0.04em; }
+    .benefit-desc { font-size: 12px; line-height: 1.9; color: var(--gray-light); letter-spacing: 0.03em; }
 
     /* MODES */
     .modes { background: var(--black); padding: 140px 60px; }
@@ -271,11 +303,24 @@
       font-family: 'Cormorant Garamond', serif; font-weight: 300;
       font-size: 56px; color: rgba(184,149,90,0.1); line-height: 1; margin-bottom: 16px;
     }
+    .mode-badge {
+      display: inline-block; font-family: 'Montserrat', sans-serif; font-weight: 300;
+      font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); border: 1px solid rgba(184,149,90,0.3); padding: 4px 10px; margin-bottom: 16px;
+    }
     .mode-card h3 {
       font-family: 'Cormorant Garamond', serif; font-weight: 400;
-      font-size: 22px; color: var(--gold-light); margin-bottom: 12px;
+      font-size: 22px; color: var(--gold-light); margin-bottom: 8px;
+    }
+    .mode-sub {
+      font-family: 'Montserrat', sans-serif; font-size: 11px; color: var(--gold);
+      letter-spacing: 0.1em; margin-bottom: 16px;
     }
     .mode-card p { font-size: 14px; line-height: 2; color: var(--gray-light); letter-spacing: 0.04em; }
+    .mode-tech {
+      margin-top: 20px; font-size: 11px; color: var(--gray);
+      letter-spacing: 0.03em; line-height: 1.8;
+    }
     .mode-ai {
       margin-top: 2px; background: rgba(184,149,90,0.05);
       border: 1px solid rgba(184,149,90,0.2); border-top: 2px solid var(--gold);
@@ -302,12 +347,7 @@
       color: var(--gold); border: 1px solid rgba(184,149,90,0.3);
       display: inline-block; padding: 6px 16px; margin-bottom: 32px;
     }
-    .product-price {
-      font-family: 'Cormorant Garamond', serif; font-weight: 300;
-      font-size: 52px; color: var(--white); margin: 28px 0 8px; letter-spacing: 0.02em;
-    }
-    .product-price-note { font-size: 12px; color: var(--gray); letter-spacing: 0.1em; margin-bottom: 40px; }
-    .product-specs { list-style: none; margin-bottom: 40px; border-top: 1px solid rgba(184,149,90,0.15); }
+    .product-specs { list-style: none; margin: 32px 0 40px; border-top: 1px solid rgba(184,149,90,0.15); }
     .product-specs li {
       display: flex; justify-content: space-between;
       padding: 14px 0; border-bottom: 1px solid rgba(184,149,90,0.15);
@@ -375,9 +415,7 @@
       color: var(--white); margin-bottom: 24px;
     }
     .cta-final h2 em { font-style: italic; color: var(--gold-light); }
-    .cta-final p { font-size: 14px; line-height: 2.2; color: var(--gray-light); margin-bottom: 48px; letter-spacing: 0.05em; }
-    .cta-price { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 56px; color: var(--white); display: block; }
-    .cta-price-note { font-size: 12px; color: var(--gray); letter-spacing: 0.1em; margin-top: 4px; margin-bottom: 44px; }
+    .cta-final p { font-size: 14px; line-height: 2.2; color: var(--gray-light); margin-bottom: 52px; letter-spacing: 0.05em; }
     .btn-gold-xl {
       display: inline-block; font-family: 'Montserrat', sans-serif; font-weight: 400;
       font-size: 13px; letter-spacing: 0.25em; text-transform: uppercase;
@@ -410,7 +448,7 @@
       nav { padding: 20px 24px; }
       .nav-links { display: none; }
       .hero { padding: 0 24px 80px; }
-      #technology, #benefits, #product, .modes, .faq, .cta-final { padding: 80px 24px; }
+      #technology, #benefits, #product, .modes, .faq, .cta-final, .evidence { padding: 80px 24px; }
       .problem { grid-template-columns: 1fr; }
       .problem-image img { height: 320px; }
       .problem-text { padding: 60px 24px; }
@@ -419,9 +457,11 @@
       .stat-item { border-right: none; border-bottom: 1px solid rgba(184,149,90,0.12); }
       .tech-grid { grid-template-columns: 1fr; }
       .tech-full-grid { grid-template-columns: repeat(2, 1fr); }
-      .benefits-grid, .modes-grid { grid-template-columns: 1fr; }
+      .benefits-grid { grid-template-columns: 1fr 1fr; }
+      .modes-grid { grid-template-columns: 1fr; }
       .mode-ai { grid-template-columns: 1fr; }
       .product-layout { grid-template-columns: 1fr; }
+      .evidence-inner { grid-template-columns: 1fr; }
       footer { flex-direction: column; gap: 24px; text-align: center; padding: 40px 24px; }
       .footer-links { flex-wrap: wrap; justify-content: center; }
     }
@@ -451,9 +491,9 @@
     </h1>
     <p class="hero-sub">
       座りっぱなしの取締役会、長距離フライト、極限の緊張感。<br>
-      蓄積された身体の滞りは、思考の明晰さを静かに奪います。<br>
+      多忙なリーダーほど、身体のメンテナンスを後回しにしています。<br>
       OlyLife Shakenは、あなたの時間を1秒も奪わず、<br>
-      細胞レベルのコンディショニングを「巻くだけ」で実現します。
+      お腹・腰まわりに「巻くだけ」で細胞レベルのケアを実現します。
     </p>
     <div class="hero-cta-group">
       <a href="https://line.me" class="btn-primary">公式LINEで特別案内を受け取る</a>
@@ -471,15 +511,15 @@
     <div class="section-label">The Problem</div>
     <h2 class="section-title">多忙なリーダーが<br>見落としている<em>リスク</em></h2>
     <div class="divider"></div>
-    <p>一流の経営者にとって、身体は唯一無二の経営資源です。しかし多くのリーダーが、多忙を理由にそのメンテナンスを後回しにしています。</p>
-    <p>あなたにも、こうした心当たりはないでしょうか。</p>
+    <p>一流の経営者にとって、身体は唯一無二の経営資源です。しかし、多くのリーダーが多忙を理由にそのメンテナンスを後回しにしています。</p>
+    <p>こんな心当たりはありませんか？</p>
     <ul class="problem-list">
-      <li>長時間のデスクワーク後の腰の疲労感</li>
-      <li>年々落ちていく代謝と体型の変化</li>
-      <li>お腹周りの冷え・むくみ</li>
-      <li>運動・ケアの習慣が続かない</li>
-      <li>移動中・フライト後の腰への負担</li>
-      <li>胃腸の不調・消化の悪さ</li>
+      <li>長時間のデスクワークで腰の疲労を感じる</li>
+      <li>運動や食事制限が続かない</li>
+      <li>年々、代謝が落ちている</li>
+      <li>お腹が冷えて痩せにくい</li>
+      <li>お腹周りの体型が気になる</li>
+      <li>胃腸の不調・むくみが続く</li>
     </ul>
     <div class="problem-quote">
       <p>健康管理もまた、重要な経営判断の一つである。</p>
@@ -492,11 +532,11 @@
 <div class="stats">
   <div class="stat-item">
     <div class="stat-num">7<span class="stat-unit">種</span></div>
-    <div class="stat-label">業務レベルの痩身テクノロジーを<br>1台に凝縮</div>
+    <div class="stat-label">業務レベルのテクノロジーを<br>1台に凝縮</div>
   </div>
   <div class="stat-item">
-    <div class="stat-num">30<span class="stat-unit">分</span></div>
-    <div class="stat-label">1回の使用で完了する<br>細胞レベルのコンディショニング</div>
+    <div class="stat-num">20<span class="stat-unit">分</span></div>
+    <div class="stat-label">AIが生成する<br>1回のパーソナルプログラム</div>
   </div>
   <div class="stat-item">
     <div class="stat-num">20<span class="stat-unit">cm</span></div>
@@ -508,24 +548,24 @@
 <section id="technology">
   <div class="tech-intro">
     <div class="section-label">The Science</div>
-    <h2 class="section-title">科学が証明した、<br><em>巻く「細胞投資」</em></h2>
+    <h2 class="section-title">科学が証明した、<br><em>巻く「細胞ケア」</em></h2>
     <div class="divider"></div>
-    <p>一般的な家庭用機器は1〜2機能が限界です。Shakenは業務レベルの痩身・コンディショニング機能を7種類搭載し、お腹・腰まわりに集中アプローチするよう設計された次世代スマートデバイスです。</p>
+    <p>一般的な家庭用機器は1〜2機能が限界です。Shakenは業務レベルのテクノロジーを7種類搭載し、お腹・腰まわりに集中アプローチするよう設計された、次世代PEMFスマート脂肪燃焼デバイスです。</p>
   </div>
   <div class="tech-grid">
     <div class="tech-card">
       <div class="tech-number">01</div>
       <h3>Core Technology</h3>
-      <h4>PEMF<br>パルス電磁界</h4>
-      <p>超低周波PEMFの媒質横断透過技術により、体内20cmの生体組織にエネルギー介入が可能。細胞膜電位とミトコンドリアの代謝経路を調節し、炎症因子の発生を抑制。腸炎・腰痛・婦人科系疾患など深部からのケアをサポートします。世界中のアスリートやヘルスケア現場で活用される、最先端の自己管理テクノロジーです。</p>
-      <span class="tech-badge">Deep Tissue · 20cm Penetration</span>
+      <h4>フォーカス超音波<br>＋高周波振動・温熱</h4>
+      <p>CellBreak™細胞破壊テクノロジーにより、皮下脂肪層（10〜20mm）まで高周波共振（1MHz）で脂肪細胞膜の共振解離を誘導し、脂質を遊離脂肪酸へ分解します。高周波振動でウエスト・腹筋を刺激して脂肪細胞を圧縮。温熱浸透が腹部組織を活性化し、血液循環を促進して脂肪代謝を加速させます。</p>
+      <span class="tech-badge">Fat Breakdown · 10–20mm Deep</span>
     </div>
     <div class="tech-card">
       <div class="tech-number">02</div>
       <h3>Core Technology</h3>
-      <h4>フォーカス超音波<br>＋高周波振動・温熱</h4>
-      <p>皮下脂肪層（10〜20mm）まで超高周波共振により脂肪細胞膜の解離と脂質分解を促進。高周波振動がウエストの筋肉を刺激し脂肪細胞を圧縮。さらに熱エネルギーが腹部組織を活性化し、血液循環を促進して脂肪代謝を加速させます。</p>
-      <span class="tech-badge">Fat Breakdown · Metabolic Boost</span>
+      <h4>PEMF<br>7.8Hz超低周波パルス電磁界</h4>
+      <p>7.8Hz超低周波PEMFの媒質横断透過技術により、体内20cmの生体組織にエネルギー介入が可能。細胞膜電位とミトコンドリアの代謝経路を調節し、炎症促進因子の発現を抑制します。腸炎・腎炎・前立腺炎・婦人科系炎症・腰筋損傷・椎間板ヘルニアなどの炎症緩和をサポート。深部の微小循環を活性化し、代謝廃棄物を効率的に浄化します。</p>
+      <span class="tech-badge">Deep Tissue · 20cm Penetration · 7.8Hz</span>
     </div>
   </div>
   <div class="tech-full">
@@ -533,67 +573,99 @@
     <div class="tech-full-grid">
       <div class="tech-sub">
         <div class="tech-sub-name">フォーカス超音波</div>
-        <div class="tech-sub-desc">深層脂肪へ直接アプローチ。脂肪細胞膜の解離と脂質分解を促進</div>
+        <div class="tech-sub-desc">CellBreak™技術で深層脂肪細胞を直接ターゲット。脂質を遊離脂肪酸へ分解</div>
       </div>
       <div class="tech-sub">
         <div class="tech-sub-name">高周波振動</div>
-        <div class="tech-sub-desc">代謝アップ・脂肪を柔らかくする。筋肉を刺激しラインを整える</div>
+        <div class="tech-sub-desc">ウエスト・腹部筋肉を刺激し脂肪細胞を圧縮。代謝をアップ</div>
       </div>
       <div class="tech-sub">
         <div class="tech-sub-name">温熱</div>
-        <div class="tech-sub-desc">熱エネルギーで血液循環を促進。脂肪代謝を加速させる</div>
+        <div class="tech-sub-desc">熱浸透が腹部組織を活性化。血液循環促進・脂肪代謝加速</div>
       </div>
       <div class="tech-sub">
         <div class="tech-sub-name">RFラジオ波</div>
-        <div class="tech-sub-desc">皮膚下3〜5mmまで到達。コラーゲン再生・たるみ・妊娠線ケア</div>
+        <div class="tech-sub-desc">皮膚下3〜5mm到達。コラーゲン再生・たるみ・筋弾力ケア</div>
       </div>
       <div class="tech-sub">
-        <div class="tech-sub-name">赤外線光</div>
-        <div class="tech-sub-desc">表皮層を透過し代謝廃棄物を排除。シミ・シワ・傷跡のケアにも</div>
+        <div class="tech-sub-name">赤外線（レッドライト）</div>
+        <div class="tech-sub-desc">表皮層を透過し代謝廃棄物を排除。シミ・シワ・妊娠線・傷跡ケア</div>
       </div>
       <div class="tech-sub">
         <div class="tech-sub-name">エアバッグマッサージ</div>
-        <div class="tech-sub-desc">複数エアバッグの加圧・解放で手のひらのマッサージ動作を再現</div>
+        <div class="tech-sub-desc">複数エアバッグの加圧・解放で手のひらのマッサージ動作を再現。ラインを整える</div>
       </div>
       <div class="tech-sub">
         <div class="tech-sub-name">PEMF</div>
-        <div class="tech-sub-desc">ミトコンドリアを活性化。深部の炎症緩和・腸の動きをサポート</div>
+        <div class="tech-sub-desc">7.8Hz超低周波で20cm深部まで介入。ミトコンドリア活性化・臓器SPAを提供</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- BENEFITS -->
+<!-- EVIDENCE -->
+<div class="evidence">
+  <div class="evidence-inner">
+    <div class="evidence-text">
+      <div class="section-label">Clinical Evidence</div>
+      <h2 class="section-title">科学論文が証明する、<br><em>7テクノロジーの実力</em></h2>
+      <div class="divider"></div>
+      <p>Shakenに搭載された各テクノロジーは、世界中のアスリートやヘルスケア現場で活用されており、複数の査読付き学術論文によってその効果が実証されています。</p>
+      <p>RFとエアバッグマッサージの複合技術による体型への効果、フォーカス超音波による脂肪減少効果など、業務レベルのエビデンスが1台に凝縮されています。</p>
+      <ul class="evidence-refs">
+        <li>Leptin level decreases after treatment with Radiofrequency and Ultrasound cavitation</li>
+        <li>Treatment by Combination of Non-Invasive Radio-Frequency and Ultrasound Cavitation</li>
+        <li>Radiofrequency Heating and High-Intensity Focused Electromagnetic Treatment: First Sham-Controlled Randomized Trial</li>
+        <li>Induction of Fat Apoptosis by a Non-Thermal Device: Non-Invasive High-Intensity Electromagnetic Technology</li>
+      </ul>
+    </div>
+    <div class="evidence-chart">
+      <div class="evidence-chart-title">Study Data — Waist Circumference Reduction</div>
+      <p>フォーカス超音波の有効性・安全性に関する研究において、テストグループはウエスト周囲径が88.87cmから85.56cmへ減少。コントロールグループ（87.09cm→86.47cm）と比較して、有意に大きな減少が確認されました。</p>
+      <div class="evidence-source">出典：学術論文「A Study on the Efficacy and Safety of Focused Ultrasound for Fat Reduction and Body Contouring」</div>
+    </div>
+  </div>
+</div>
+
+<!-- BENEFITS / USE CASES -->
 <section id="benefits">
   <div class="benefits-intro">
     <div class="section-label">Time Is Asset</div>
     <h2 class="section-title">あらゆるシーンを、<br><em>極上のリカバリータイム</em>へ。</h2>
     <div class="divider"></div>
-    <p>ボタン2つの超シンプル操作。仕事をしながら、移動しながら、あなたの生活スタイルに自然と馴染みます。</p>
+    <p>ボタン2つの超シンプル操作。仕事をしながら、移動しながら、あなたの生活スタイルに自然と馴染みます。座ったまま・横になったまま・運動中にも使用可能です。</p>
   </div>
   <div class="benefits-grid">
     <div class="benefit-card">
-      <img src="https://images.unsplash.com/photo-1554774853-aae0a22c8aa4?auto=format&fit=crop&q=80&w=800" alt="Office" />
+      <img src="https://images.unsplash.com/photo-1554774853-aae0a22c8aa4?auto=format&fit=crop&q=80&w=600" alt="Office" />
       <div class="benefit-overlay">
-        <div class="benefit-tag">Office &amp; Boardroom</div>
-        <div class="benefit-title">スーツの下に。<br>会議中も最高のコンディションで。</div>
-        <div class="benefit-desc">スリムな設計で目立たず装着可能。重要な決断の場でも、身体のメンテナンスは止まりません。パソコン操作もそのまま継続できます。</div>
+        <div class="benefit-tag">Professional Use</div>
+        <div class="benefit-title">仕事中・会議中に</div>
+        <div class="benefit-desc">パソコン操作をしながら使用OK。作業を止めることなくケアが続きます。</div>
       </div>
     </div>
     <div class="benefit-card">
-      <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&q=80&w=800" alt="Travel" />
+      <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&q=80&w=600" alt="Travel" />
       <div class="benefit-overlay">
-        <div class="benefit-tag">Transit &amp; Travel</div>
-        <div class="benefit-title">移動中が、<br>ウェルネスサロンに変わる。</div>
-        <div class="benefit-desc">長時間フライト・新幹線移動など、腰への負担が最大になる時間こそShakenの出番。飛行機・電車・車内での使用に適したポータブル設計です。</div>
+        <div class="benefit-tag">Business Trip</div>
+        <div class="benefit-title">出張・移動中に</div>
+        <div class="benefit-desc">飛行機・新幹線・電車など、移動中の腰への負担をケア。ポータブル設計で場所を選びません。</div>
       </div>
     </div>
     <div class="benefit-card">
-      <img src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&q=80&w=800" alt="Golf" />
+      <img src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&q=80&w=600" alt="Athletic" />
       <div class="benefit-overlay">
-        <div class="benefit-tag">Golf &amp; Leisure</div>
-        <div class="benefit-title">週末のパフォーマンスを<br>底上げする。</div>
-        <div class="benefit-desc">プレー前のウォーミングアップ、プレー後のメンテナンスに。腰を支え可動域を確保。ヨガやランニング中も使用可能です。</div>
+        <div class="benefit-tag">Athletic Activities</div>
+        <div class="benefit-title">運動中・ゴルフ中に</div>
+        <div class="benefit-desc">ランニング・ヨガ・ゴルフなど運動中にも使用可能。前屈時も滑り落ちない設計です。</div>
+      </div>
+    </div>
+    <div class="benefit-card">
+      <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=600" alt="Relax" />
+      <div class="benefit-overlay">
+        <div class="benefit-tag">Recreational Use</div>
+        <div class="benefit-title">リラックスタイムに</div>
+        <div class="benefit-desc">ソファや寝室でリラックスしながら使用。日常のあらゆる場面に溶け込みます。</div>
       </div>
     </div>
   </div>
@@ -602,31 +674,40 @@
 <!-- MODES -->
 <div class="modes">
   <div class="section-label">Smart Mode</div>
-  <h2 class="section-title">目的に応じた<br><em>3つのモード</em></h2>
+  <h2 class="section-title">ワンボタンで切り替わる<br><em>3つのエネルギーフィールド</em></h2>
   <div class="divider"></div>
   <div class="modes-grid">
     <div class="mode-card active">
       <div class="mode-num">01</div>
+      <div class="mode-badge">7-in-1 Targeted Fat Burning</div>
       <h3>ボディシェイプモード</h3>
-      <p>脂肪へのターゲットアプローチ。超音波・振動・温熱を複合的に使用し、お腹・腰まわりの脂肪ケアに集中します。</p>
+      <div class="mode-sub">脂肪燃焼・ボディシェイプ・フィットネスサポート</div>
+      <p>7種全テクノロジーを結集。お腹・腰まわりの脂肪へ集中アプローチし、体型を整えます。</p>
+      <div class="mode-tech">使用技術：PEMF・温熱・超音波・マッサージ・振動・RFラジオ波・赤外線</div>
     </div>
     <div class="mode-card">
       <div class="mode-num">02</div>
+      <div class="mode-badge">5D Deep Repair</div>
       <h3>マッサージモード</h3>
-      <p>ウエストの健康と内臓・深層ケアに特化。PEMFとエアバッグマッサージで内側から整えます。腸の不調・腰痛・婦人科系ケアにも。</p>
+      <div class="mode-sub">コア強化・内臓ケア</div>
+      <p>PEMFと複合テクノロジーで深部から整えます。腰痛・腸の不調・前立腺炎・婦人科系ケアにも対応。</p>
+      <div class="mode-tech">使用技術：PEMF・マッサージ・振動・温熱・RFラジオ波</div>
     </div>
     <div class="mode-card">
       <div class="mode-num">03</div>
+      <div class="mode-badge">2-Effect Gentle Care</div>
       <h3>温熱モード</h3>
+      <div class="mode-sub">腰部保温・生理ケア</div>
       <p>温めることで血液循環を促進。お腹の冷えや婦人科系のケアに。リラックスしながら使用できます。</p>
+      <div class="mode-tech">使用技術：PEMF・温熱</div>
     </div>
   </div>
   <div class="mode-ai">
     <div>
       <div class="mode-ai-label">AI Mode — OlyWatch連携</div>
-      <h3>自分以上に、<br>自分を理解する。</h3>
+      <h3>千人千体。<br>AIがあなただけに<br>合わせる。</h3>
     </div>
-    <p>シェイクン1台のご購入につき、OlyWatchを1台プレゼント。17種類のセンサーが心拍数・血中酸素濃度・睡眠の質を追跡し、その日の体調に応じて最適なモードを自動選択するAIモードが使用可能に。Bluetooth連携で、ランニングなどの運動中もスマートに操作できます。</p>
+    <p>OlyWatchをShakenに接続すると、AIモードが起動。心拍数・血中酸素濃度・睡眠の質などのデータを収集し、専用AIアルゴリズムがその日のあなたの体調に合わせた最適な20分プログラムを自動生成します。超音波・振動・温熱・RFラジオ波などの使用強度と時間をインテリジェントに調整。Bluetoothで素早く接続し、腕元のウォッチ画面からリアルタイムで操作できます。</p>
   </div>
 </div>
 
@@ -637,28 +718,31 @@
       <img src="https://raw.githubusercontent.com/hick81m-ai/sample_CEO/main/assets/AOT_CEO_last.webp" alt="OlyLife Shaken Massager" />
     </div>
     <div class="product-info">
-      <span class="product-tag">Authentic Quality</span>
+      <span class="product-tag">PEMF Smart Fat-Burning Device</span>
       <div class="section-label">OlyLife Shaken Massager</div>
       <h2 class="section-title">一流が辿り着く、<br><em>究極のセルフマネジメント</em></h2>
       <div class="divider"></div>
-      <div class="product-price">¥198,000<span style="font-size:18px;color:var(--gray);"> （税込）</span></div>
-      <div class="product-price-note">お支払い方法：銀行振込 / クレジットカード</div>
       <ul class="product-specs">
-        <li><span>搭載テクノロジー</span><span>7種（PEMF・超音波・RF・赤外線・振動・温熱・エアバッグ）</span></li>
-        <li><span>対応ウエスト</span><span>60〜150cm</span></li>
+        <li><span>搭載テクノロジー</span><span>7種（超音波・振動・温熱・RFラジオ波・赤外線・エアバッグマッサージ・PEMF）</span></li>
+        <li><span>PEMF周波数</span><span>7.8Hz超低周波・最大20cm深部到達</span></li>
+        <li><span>超音波周波数</span><span>1MHz（CellBreak™技術）</span></li>
+        <li><span>操作</span><span>本体ボタン2つ（電源／モード切替）／OlyWatch Bluetooth連携</span></li>
+        <li><span>対応ウエスト</span><span>60〜150cm（70°〜120°自由調整）</span></li>
         <li><span>対応体重</span><span>40〜130kg</span></li>
-        <li><span>操作</span><span>本体ボタン2つ／OlyWatch連携</span></li>
-        <li><span>肌面素材</span><span>医療グレードシリコン（アレルギー対応）</span></li>
-        <li><span>AIモード</span><span>付属OlyWatch連携で使用可</span></li>
-        <li><span>付属品</span><span>OlyWatch 1台・日本語取扱説明書</span></li>
-        <li><span>保証</span><span>1年間故障・新品交換保証</span></li>
+        <li><span>肌面素材</span><span>ソフトシリコン＋精密鋳造304ステンレス鋼粉（低アレルギー性）</span></li>
+        <li><span>ディスプレイ</span><span>デュアルスクリーン（左：強度ギア表示 / 右：モード・カウントダウン）</span></li>
+        <li><span>AIモード</span><span>付属OlyWatch連携で使用可・20分パーソナルプログラム自動生成</span></li>
+        <li><span>対応言語</span><span>8言語（日本語含む）</span></li>
+        <li><span>付属品</span><span>OlyWatch 1台・スリーブカバー・日本語取扱説明書・ウエスト延長ストラップ</span></li>
         <li><span>お手入れ</span><span>アルコールウェットティッシュで清拭可</span></li>
+        <li><span>保証</span><span>1年間故障・新品交換保証</span></li>
+        <li><span>お支払い</span><span>銀行振込 / クレジットカード</span></li>
       </ul>
       <div class="product-warranty">
         <strong>1年間・新品交換保証付き。</strong><br>
         初期不良はもちろん、1年以内の故障は新品交換にて対応いたします。安心してご使用ください。
       </div>
-      <a href="https://line.me" class="btn-gold-large">LINEで価格・在庫を問い合わせる</a>
+      <a href="https://line.me" class="btn-gold-large">LINEで在庫・詳細を問い合わせる</a>
       <div class="btn-note">現在、世界的な注文殺到により1〜2ヶ月待ちの場合がございます。お早めにご確認ください。</div>
     </div>
   </div>
@@ -682,7 +766,7 @@
         <span class="faq-q-text">1日に何回使用できますか？</span>
         <span class="faq-icon">+</span>
       </div>
-      <div class="faq-a">1日2回まで、4時間以上の間隔を空けてご使用ください。毎日の継続的なケアが効果を高めます。ぜひ日課としてご活用ください。</div>
+      <div class="faq-a">1日2回まで、4時間以上の間隔を空けてご使用ください。毎日の継続的なケアが効果を高めます。</div>
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">
@@ -696,14 +780,21 @@
         <span class="faq-q-text">操作は複雑ですか？</span>
         <span class="faq-icon">+</span>
       </div>
-      <div class="faq-a">本体には電源とモード切替の2ボタンのみ。モニターに残り時間・モード・強さがわかりやすく表示されます。日本語取扱説明書も付属しており、機械が苦手な方でも安心してお使いいただけます。</div>
+      <div class="faq-a">本体には電源兼強度調整ボタンとモード切替ボタンの2つのみ。デュアルスクリーンで強度・モード・残り時間がリアルタイム表示されます。また前回使用したモードをデバイスが記憶するメモリー機能付き。日本語取扱説明書も付属しています。</div>
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">
         <span class="faq-q-text">どのサイズの方まで対応していますか？</span>
         <span class="faq-icon">+</span>
       </div>
-      <div class="faq-a">ウエスト60〜150cm、体重40〜130kgの方に対応しています。70〜120度の自由調整が可能で、前屈や運動中も滑り落ちない設計です。</div>
+      <div class="faq-a">ウエスト60〜150cm、体重40〜130kgの方に対応しています。70°〜120°の自由調整が可能で、前屈や運動中も滑り落ちない設計です。ウエスト延長ストラップ（30cm＋70cm）も付属しています。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">素肌に直接つける必要がありますか？</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">はい、素肌にデバイスが直接触れるようにご使用ください。肌面はソフトシリコン素材で低アレルギー性です。付属のスリーブカバーを使用することでお手入れが簡単になります。</div>
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">
@@ -736,11 +827,9 @@
     <h2>身体という、<br>最も重要な<em>経営資源</em>へ。</h2>
     <p>
       時間を奪わない。手間をかけない。<br>
-      巻くだけで、細胞レベルから整える30分間。<br>
+      巻くだけで、細胞レベルから整える20分間。<br>
       一流のリーダーが選ぶ、究極のセルフマネジメントを今すぐ。
     </p>
-    <div class="cta-price">¥198,000</div>
-    <div class="cta-price-note">OlyWatch 1台付属 · 1年間新品交換保証 · 銀行振込／カード払い対応</div>
     <a href="https://line.me" class="btn-gold-xl">公式LINEで今すぐ問い合わせる</a>
     <div class="cta-sub">現在、世界的な注文殺到により1〜2ヶ月待ちの場合がございます。お早めにご確認ください。</div>
   </div>
