@@ -55,6 +55,29 @@
             transform: translateY(-2px);
             box-shadow: 0 10px 20px -5px rgba(180, 138, 84, 0.4);
         }
+
+        /* Video Background Styling */
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .video-container video {
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            opacity: 0.4; /* 重厚感を出すために透明度を調整 */
+        }
     </style>
 </head>
 <body class="bg-white overflow-x-hidden">
@@ -76,12 +99,18 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="relative h-screen flex items-center justify-center bg-[#0f172a] overflow-hidden pt-20">
-        <!-- REPLACE: Hero Background Image (Executive mood) -->
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1600" alt="Executive Room" class="w-full h-full object-cover opacity-30">
-            <div class="absolute inset-0 bg-gradient-to-b from-[#0f172a]/80 via-transparent to-[#0f172a]"></div>
+    <!-- Hero Section with Video Background -->
+    <section class="relative h-screen flex items-center justify-center bg-[#0f172a] overflow-hidden">
+        
+        <!-- VIDEO BACKGROUND AREA -->
+        <div class="video-container">
+            <!-- REPLACE: Video URL (.mp4推奨) -->
+            <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1600">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-business-center-skyscrapers-at-night-4122-large.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <!-- Overlay for legibility -->
+            <div class="absolute inset-0 bg-gradient-to-b from-[#0f172a]/90 via-transparent to-[#0f172a]"></div>
         </div>
 
         <div class="relative z-10 max-w-5xl mx-auto px-6 text-center text-white">
@@ -134,7 +163,7 @@
         </div>
     </section>
 
-    <!-- Technology Section (B-plan elements) -->
+    <!-- Technology Section -->
     <section id="technology" class="py-32 bg-[#0f172a] text-white overflow-hidden">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-20 reveal">
@@ -168,7 +197,7 @@
         </div>
     </section>
 
-    <!-- Scenarios (C-plan elements) -->
+    <!-- Scenarios -->
     <section id="benefits" class="py-24 bg-[#f8fafc]">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
@@ -179,7 +208,6 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Case 1 -->
                 <div class="reveal group">
                     <div class="overflow-hidden rounded-lg mb-6 shadow-lg">
                         <img src="https://images.unsplash.com/photo-1554774853-aae0a22c8aa4?auto=format&fit=crop&q=80&w=800" alt="Work" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
@@ -187,7 +215,6 @@
                     <h4 class="font-bold mb-2">Office & Boardroom</h4>
                     <p class="text-xs text-gray-500 leading-relaxed">スーツの下に巻いても目立たないスリム設計。重要な決断を行う会議中も、あなたのコンディションは最高潮に保たれます。</p>
                 </div>
-                <!-- Case 2 -->
                 <div class="reveal group" style="transition-delay: 150ms;">
                     <div class="overflow-hidden rounded-lg mb-6 shadow-lg">
                         <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&q=80&w=800" alt="Travel" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
@@ -195,7 +222,6 @@
                     <h4 class="font-bold mb-2">Transit & Travel</h4>
                     <p class="text-xs text-gray-500 leading-relaxed">長時間の移動中こそ、腰への負担が最大。ポータブルなShakenなら、飛行機や車内が移動型ウェルネスサロンに変わります。</p>
                 </div>
-                <!-- Case 3 -->
                 <div class="reveal group" style="transition-delay: 300ms;">
                     <div class="overflow-hidden rounded-lg mb-6 shadow-lg">
                         <img src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&q=80&w=800" alt="Home" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
@@ -210,11 +236,11 @@
     <!-- Product Display -->
     <section id="product" class="py-32 bg-white">
         <div class="max-w-5xl mx-auto px-6 text-center reveal">
-            <h2 class="font-elegant text-3xl md:text-5xl font-bold mb-12 uppercase tracking-tighter">OlyLife Shaken Massager</h2>
+            <h2 class="font-elegant text-3xl md:text-5xl font-bold mb-12 uppercase tracking-tighter text-[#0f172a]">OlyLife Shaken Massager</h2>
             <div class="relative inline-block mb-12">
                 <!-- REPLACE: Product Main Image -->
                 <div class="w-full max-w-lg mx-auto bg-[#f8fafc] rounded-full p-12 shadow-inner">
-                    <img src="https://raw.githubusercontent.com/hick81m-ai/sample_CEO/main/assets/AOT_CEO_last.webp&fit=crop&q=80&w=800" alt="Product Device" class="w-full object-contain mix-blend-multiply">
+                    <img src="https://images.unsplash.com/photo-1583416750470-965b2707b355?auto=format&fit=crop&q=80&w=800" alt="Product Device" class="w-full object-contain mix-blend-multiply">
                 </div>
                 <div class="absolute top-0 right-0 bg-[#0f172a] text-[#b48a54] p-6 rounded-full text-xs font-bold tracking-widest shadow-xl">
                     AUTHENTIC<br>QUALITY
@@ -248,7 +274,7 @@
                 OlyLife <span class="text-[#b48a54]">SHAKEN</span>
             </div>
             <p class="text-gray-500 text-xs mb-8 tracking-widest leading-loose">
-                ※本製品は健康維持を目的とした製品であり、医療機器ではありません。<br>
+                ※本製品は健康維持を目的としたコンディショニング・ギアであり、医療機器ではありません。<br>
                 効果には個人差があります。日常の健康管理の一助としてご活用ください。
             </p>
             <div class="flex justify-center space-x-6 mb-12">
@@ -256,7 +282,7 @@
                 <a href="#" class="text-gray-400 hover:text-[#b48a54] text-xs tracking-widest">特定商取引法に基づく表記</a>
             </div>
             <p class="text-gray-600 text-[10px] tracking-widest">
-                © 2026 OlyLife Shaken Massager. All Rights Reserved.
+                © 2024 OlyLife Shaken Massager. All Rights Reserved.
             </p>
         </div>
     </footer>
